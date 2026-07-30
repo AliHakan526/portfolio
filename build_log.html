@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ali hakan unal | build log</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="css/build_log.css">
+</head>
+<body>
+    <main class="build-log">
+        <header class="page-header">
+            <p class="eyebrow">Build Log</p>
+            <h1>Projects, Notes, Decisions</h1>
+            <p class="header-copy">
+                A place for project writeups, technical notes, lessons learned, and long explanations about what was built and why.
+            </p>
+        </header>
+
+        <section class="project-list" aria-label="Project list">
+            <article class="project-entry">
+                <div class="project-meta">
+                    <span>01</span>
+                    <span>Robotics / Image Processing</span>
+                </div>
+
+                <details open>
+                    <summary>
+                        <span class="project-title-row">
+                            <span>ANEAR</span>
+                            <a class="github-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open ANEAR on GitHub">
+                                <i class="devicon-github-original"></i>
+                            </a>
+                        </span>
+                        <small>A unitree go1 robot that takes care of a toddler with some protocols </small>
+                    </summary>
+                    <div class="project-content">
+                        <p>
+                            In this project, robot does has two important protection protocols:
+                            1- The robot can be teleoperated from the mobile application that we have written. The mapping is also done by this mobile application.
+                            After the mapping is done, the danger zones that the parent wants to keep his/her child away are marked by the parent and these coordinates are sent to robot.
+                            While running using nav2, in the normal use case, robot uses it lidar data and constantly looks for the distance between the child and the danger zone and if some conditions are met, the the robot moves to between the danger zone and the child.
+                            It keeps the distance from the child using nav2 and local costmap inflation.
+                            2- Robot has weights of a fine-tuned YOLOv8n. Using this, robot can detect if the child is holding a knife or a bleach. 
+
+                            In both protocols, a push notification is send to the parent and it is logged in the database.
+
+                            For the robot to be interactive, there is an AI API implemented inside of it, prompted to train the toddler and play with him/her.
+                            These conversations are also logged in the database for use to monitor from its mobile application.
+                        </p>
+                        <p>
+                            If wanted, robot can be teleoperated by the parent anytime. To deactivate the nav2 navigation, there is a finite state machine implementation behind the scene,
+                            both in the active blocker protocol and owner choose.
+                        </p>
+        
+
+                        <p>
+                            Stack: Python, C++, ROS2 Humble, OpenCV, slam, nav2, octomap, gazebo
+                        </p>
+                    </div>
+                </details>
+            </article>
+
+            <article class="project-entry">
+                <div class="project-meta">
+                    <span>02</span>
+                    <span>AI / ML / full-stack</span>
+                </div>
+
+                <details>
+                    <summary>
+                        <span class="project-title-row">
+                            <span>ConsoleInfer</span>
+                            <a class="github-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open Ulti Console on GitHub">
+                                <i class="devicon-github-original"></i>
+                            </a>
+                        </span>
+                        <small>A console project for people to train models and clean datasets.</small>
+                    </summary>
+                    <div class="project-content">
+                        <p>
+                            This project is in development right now.
+                        </p>
+                        <p>
+                            A website that the users can upload their datasets, visualize the data, clean the data and choose a model that best fits their data and save the model.
+
+                            Stack: Python, FastAPI, React, TailwindCSS, sklearn
+                        </p>
+                    </div>
+                </details>
+            </article>
+
+            <article class="project-entry">
+                <div class="project-meta">
+                    <span>03</span>
+                    <span>frontend</span>
+                </div>
+
+                <details>
+                    <summary>
+                        <span class="project-title-row">
+                            <span>Quest</span>
+                            <a class="github-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open Quest on GitHub">
+                                <i class="devicon-github-original"></i>
+                            </a>
+                        </span>
+                        <small>An rpg mobile application users can develop themselves</small>
+                    </summary>
+                    <div class="project-content">
+                        <p>
+                            This project is developed for people to fresh their memories everyday. 
+                            They can solve the daily questions and level up in their classes and higher the levels, harder the questions.
+                            It is designed to be only client-side, no backend needed. There are only API calls to the LLM to generate questions and inspect the user's github profile.
+                        </p>
+                    </div>
+                </details>
+            </article>
+
+
+            <article class="project-entry">
+                <div class="project-meta">
+                    <span>04</span>
+                    <span>DevOps / System Design</span>
+                </div>
+
+                <details open>
+                    <summary>
+                        <span class="project-title-row">
+                            <span>Podcast Agents</span>
+                            <a class="github-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open podcast agents on GitHub">
+                                <i class="devicon-github-original"></i>
+                            </a>
+                        </span>
+                        <small>A multi-agent project to generate podcasts deployed in agentcore</small>
+                    </summary>
+                    <div class="project-content">
+                        <p>
+                            This project contains 3 collaborator agents and one supervisor agent to make podcasts from the give inputs from the frontend.
+                            The user can set characters that are going to talk and set to topic to be talked about.
+                            This is turned into a prompt for the supervisor agent that lies in the agentcore.
+                            After getting the propmt via API gateway in the AWS, the agent is using its MCP servers to make psychological analysis on the characters from the web.
+                            After setting the characters, supervisor talks to agents (using A2A that has been implemented via Strands framework) to make a script and then that script is getting turned into a mp3 file via a MCP server that uses Amazon Polly service.
+
+                        </p>
+        
+
+                        <p>
+                            Stack: agentcore cli, Python, ddgs, Strands, bedrock-agentcore, AWS services (S3, DynamoDB)
+                        </p>
+                    </div>
+                </details>
+            </article>
+
+
+            <article class="project-entry">
+                <div class="project-meta">
+                    <span>05</span>
+                    <span>AI / pytorch</span>
+                </div>
+
+                <details open>
+                    <summary>
+                        <span class="project-title-row">
+                            <span>Turkish GPT Fine Tuning</span>
+                            <a class="github-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open Turkish GPT fine-tuning on GitHub">
+                                <i class="devicon-github-original"></i>
+                            </a>
+                        </span>
+                        <small>Have trained and evaluation using metrics</small>
+                    </summary>
+                    <div class="project-content">
+                        <p>
+                            Developed a specialized Turkish Large Language Model to act as a mathematics tutor, utilizing Parameter-Efficient Fine-Tuning (LoRA) to generate clear, step-by-step concept explanations.
+                            This approach optimized training efficiency and reduced compute costs without sacrificing native language fluency or domain accuracy.
+                            Rigorously evaluated the model's instructional quality and text generation performance using industry-standard NLP metrics,
+                            including Perplexity and ROUGE scores.
+                        </p>
+    
+                        <p>
+                            Stack: Python, Pytorch, Transformers
+                        </p>
+                    </div>
+                </details>
+            </article>
+
+            <article class="project-entry">
+                <div class="project-meta">
+                    <span>06</span>
+                    <span>AI / ML</span>
+                </div>
+
+                <details open>
+                    <summary>
+                        <span class="project-title-row">
+                            <span>ContextGraph</span>
+                            <a class="github-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open Optimization Algorithms Implementation on GitHub">
+                                <i class="devicon-github-original"></i>
+                            </a>
+                        </span>
+                        <small>A local AI project to organize conversations with LLMs</small>
+                    </summary>
+                    <div class="project-content">
+                        <p>
+                            This project is in development right now.
+                        </p>
+                        <p>
+                            A desktop application that works with a browser extension that imports conversations from LLM platforms and processes them locally using embedding models and topic clustering. It groups semantically related discussions, builds an interactive graph of connected topics, and provides an intuitive way to explore previous questions, answers, and context transitions while keeping data on the user's machine.
+
+                        </p>
+    
+                        <p>
+                            Stack: 
+                        </p>
+                    </div>
+                </details>
+            </article>
+
+            <article class="project-entry">
+                <div class="project-meta">
+                    <span>07</span>
+                    <span>C / ML</span>
+                </div>
+
+                <details open>
+                    <summary>
+                        <span class="project-title-row">
+                            <span>Optimization Algorithms Implementation</span>
+                        </span>
+                        <small>Implemented 3 optimization algoritms to classify between 2 types of pictures.</small>
+                    </summary>
+                    <div class="project-content">
+                        <p>
+                            Using C language, I have implemented Gradient Descent, Stochastic Gradient Descent and ADAM algorithms to classify between 2 types of images.
+
+                        </p>
+    
+                        <p>
+                            Stack: C
+                        </p>
+                    </div>
+                </details>
+            </article>
+
+            <article class="project-entry">
+                <div class="project-meta">
+                    <span>08</span>
+                    <span>frontend / backend</span>
+                </div>
+
+                <details open>
+                    <summary>
+                        <span class="project-title-row">
+                            <span>Hoodmart</span>
+                            <a class="github-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open Optimization Algorithms Implementation on GitHub">
+                                <i class="devicon-github-original"></i>
+                            </a>
+                        </span>
+                        <small>A mobile application for people to rent or rent out tools in their neighbor</small>
+                    </summary>
+                    <div class="project-content">
+                        <p>
+                            Through this project, I gained hands-on experience with designing and implementing full-stack applications. I developed RESTful APIs, implemented CRUD operations, and built a clean, well-structured frontend and backend architecture. I also learned authentication and authorization with JWT, database design and normalization, and best practices for organizing scalable applications.
+
+                        </p>
+                    </div>
+                </details>
+            </article>
+            
+
+        </section>
+    </main>
+</body>
+</html>

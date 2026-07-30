@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ali hakan ünal | about</title>
+    <link rel="stylesheet" href="css/about.css">
+</head>
+<body>
+    <main id="about-page">
+        <div id="about">
+            <p class="eyebrow">About</p>
+            <h1>WHO AM I</h1>
+            <p>I am a Computer Science student driven by one thing above all else: curiosity. I'm fascinated by understanding how systems work, whether it's artificial intelligence, robotics, backend engineering, or the infrastructure that keeps everything running.</p>
+
+            <p>That curiosity has led me to build projects across different fields—not because I couldn't choose one, but because every project was an opportunity to learn something new.</p>
+
+            <p>While building them, I always try to go beyond simply making things work. I want to understand why they work, digging into the details without losing sight of the deadline.</p>
+
+            <p>What keeps me moving is difficult to explain. I don't like standing still. Once I finish one project, I immediately start thinking about the next one.</p>
+
+            <p>There is always another technology to understand, another system to build, another person who is better, another challenge to take on, another opportunity. It isn't something I force myself to do—it's simply how I'm wired.</p>
+
+            <p>I feel a constant drive to improve, to create, and to see how far I can push myself.</p>
+            <p class="typewriter" data-text="Can you summon your talent at will, deliver at a deadline, can you sleep at night?"><span class="typed-text"></span></p>
+        </div>
+
+        <div id="pictures" aria-label="Project images">
+            <img class="image-wide image-one" src="assets/ANEAR.png" alt="ANEAR project screen">
+            <img class="image-wide image-two" src="assets/Ulti-console.gif" alt="Console project animation">
+            <div id="quest">
+                <img class="image-tall image-three" src="assets/quest1.PNG" alt="Quest project screen one">
+                <img class="image-tall image-four" src="assets/quest2.PNG" alt="Quest project screen two">
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const typewriter = document.querySelector(".typewriter");
+        const typedText = typewriter.querySelector(".typed-text");
+        const text = typewriter.dataset.text;
+        let index = 0;
+        let deleting = false;
+
+        function typeLine() {
+            typedText.textContent = text.slice(0, index);
+
+            if (!deleting && index < text.length) {
+                index++;
+                setTimeout(typeLine, 55);
+                return;
+            }
+
+            if (!deleting && index === text.length) {
+                deleting = true;
+                setTimeout(typeLine, 1800);
+                return;
+            }
+
+            if (deleting && index > 0) {
+                index--;
+                setTimeout(typeLine, 28);
+                return;
+            }
+
+            deleting = false;
+            setTimeout(typeLine, 450);
+        }
+
+        typeLine();
+    </script>
+
+</body>
+</html>

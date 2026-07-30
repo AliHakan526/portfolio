@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ali hakan unal | knowledge</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="css/knowledge.css">
+</head>
+<body>
+    <main class="knowledge-page">
+        <header class="knowledge-header">
+            <p class="eyebrow">Knowledge</p>
+            <h1>Technical Areas</h1>
+            <p>Click a field to see the tools, frameworks, and systems I have worked with.</p>
+        </header>
+
+        <section class="knowledge-grid" aria-label="Knowledge areas">
+            <button class="knowledge-card" type="button" data-area="programming">Programming Languages</button>
+            <button class="knowledge-card" type="button" data-area="frontend">Frontend</button>
+            <button class="knowledge-card" type="button" data-area="backend">Backend</button>
+            <button class="knowledge-card" type="button" data-area="mobile">Mobile Development</button>
+            <button class="knowledge-card" type="button" data-area="ai">AI & ML</button>
+            <button class="knowledge-card" type="button" data-area="robotics">Robotics</button>
+            <button class="knowledge-card" type="button" data-area="devops">DevOps & Infrastructure</button>
+            <button class="knowledge-card" type="button" data-area="cloud">Cloud</button>
+            <button class="knowledge-card" type="button" data-area="tools">Tools</button>
+        </section>
+    </main>
+
+    <section class="knowledge-modal" aria-hidden="true">
+        <div class="modal-backdrop"></div>
+        <article class="knowledge-panel" role="dialog" aria-modal="true" aria-labelledby="panel-title">
+            <button class="close-panel" type="button" aria-label="Close knowledge details">x</button>
+
+            <div class="floating-logos" aria-hidden="true"></div>
+
+            <div class="knowledge-details">
+                <p class="panel-kicker">Knowledge Area</p>
+                <h2 id="panel-title"></h2>
+                <p class="panel-description"></p>
+                <ul class="knowledge-list"></ul>
+            </div>
+        </article>
+    </section>
+
+    <script>
+        const knowledgeAreas = {
+            programming: {
+                title: "Programming Languages",
+                description: "As a Computer Science student, programming languages are fundamental to my work. I have developed a solid understanding of programming paradigms such as object-oriented and procedural programming, studied how compilers and interpreters work, and applied these concepts across a variety of personal projects. Beyond simply learning syntax, I strive to understand the underlying principles of each language and use them effectively.",
+                logos: [
+                    "devicon-c-plain",
+                    "devicon-cplusplus-plain",
+                    "devicon-python-plain",
+                    "devicon-javascript-plain"
+                ],
+                items: ["C", "C++", "Python", "JavaScript", "TypeScript", "Java", "SQL"]
+            },
+            frontend: {
+                title: "Frontend",
+                description: "I enjoy building frontend applications that combine functionality with a clean user experience. My experience includes component-based development, responsive design, modern styling solutions, and frontend tooling. Although I use AI as a productivity tool when appropriate, I make a conscious effort to understand the underlying concepts, design my own interfaces, and write code that is maintainable, scalable, and easy to extend.",
+                logos: [
+                    "devicon-react-original",
+                    "devicon-tailwindcss-original",
+                    "devicon-html5-plain",
+                    "devicon-css3-plain"
+                ],
+                items: ["React", "Tailwind CSS", "HTML5", "CSS3", "Vite", "Next.js"]
+            },
+            backend: {
+                title: "Backend",
+                description: "My backend experience includes designing APIs, developing server-side applications, and building database-driven systems using Python and JavaScript. I focus on creating clean, well-structured architectures with reliable endpoints, efficient performance, high availability, and practical deployment strategies.",
+                logos: [
+                    "devicon-nodejs-plain",
+                    "devicon-express-original",
+                    "devicon-flask-original",
+                    "devicon-postgresql-plain"
+                ],
+                items: ["Node.js", "Express", "Flask", "FastAPI", "PostgreSQL"]
+            },
+            mobile: {
+                title: "Mobile Development",
+                description: "My mobile development experience is centered around React Native and Expo, allowing me to rapidly transform ideas into polished, cross-platform applications. I am comfortable working with the React Native ecosystem and have experience using a wide range of libraries and APIs to build maintainable, user-friendly mobile experiences. As I continue to grow, I also plan to expand my expertise by learning native Android and iOS development with Kotlin and Swift.",
+                logos: [
+                    "devicon-react-original",
+                    "devicon-expo-original"
+                ],
+                items: ["React Native", "Expo"]
+            },
+            ai: {
+                title: "AI & ML",
+                description: "My work in Artificial Intelligence and Machine Learning spans both experimentation and real-world application development. I have experience with model development, data processing pipelines, computer vision, and LLM-based frameworks. Beyond using AI at a high level, I actively deepen my understanding by studying current research and building a strong mathematical intuition behind machine learning algorithms, from classical methods to deep learning and natural language processing.",
+                logos: [
+                    "devicon-pytorch-original",
+                    "devicon-tensorflow-original",
+                    "devicon-numpy-plain",
+                    "devicon-pandas-plain"
+                ],
+                items: ["PyTorch", "TensorFlow", "scikit-learn", "NumPy", "Pandas", "OpenCV", "Hugging Face", "LangChain"]
+            },
+            robotics: {
+                title: "Robotics",
+                description: "My robotics experience is centered around simulation, localization, navigation, and robotic software architecture. I am fascinated by how robots perceive their environment, localize themselves, plan motion, and translate software into real-world behavior. I have studied and worked with key robotics technologies such as SLAM, AMCL, and the Nav2 stack, gaining an understanding of the algorithms and system architecture behind autonomous navigation. Beyond hands-on development, I actively keep up with the robotics community by exploring emerging technologies, reading technical resources, and following events such as ROSCon.",
+                logos: [
+                    "devicon-ros-original",
+                    "devicon-gazebo-plain"
+                ],
+                items: ["ROS2", "Gazebo", "RViz", "SLAM Toolbox", "Nav2"]
+            },
+            devops: {
+                title: "DevOps & Infrastructure",
+                description: "My infrastructure and DevOps experience focuses on building systems that are reliable, scalable, and easy to deploy and maintain. I have worked with containerization, Linux environments, automation, reverse proxies, orchestration, and Infrastructure as Code to streamline application deployment and operations. During my internship at Beko, I gained practical experience in system design, deployment pipelines, orchestration, and modern AI deployment technologies, including Amazon Bedrock AgentCore, while working on production-oriented software systems.",
+                logos: [
+                    "devicon-docker-plain",
+                    "devicon-linux-plain",
+                    "devicon-nginx-original",
+                    "devicon-kubernetes-plain"
+                ],
+                items: ["Docker", "Linux", "Git", "GitHub Actions", "Nginx", "Kubernetes", "Terraform"]
+            },
+            cloud: {
+                title: "Cloud",
+                description: "My cloud experience covers deploying and connecting projects through managed platforms and cloud services, from application hosting to backend services and infrastructure resources.",
+                logos: [
+                    "devicon-amazonwebservices-plain-wordmark",
+                    "devicon-vercel-original",
+                    "devicon-supabase-plain"
+                ],
+                items: ["AWS", "Vercel", "Supabase"]
+            },
+            tools: {
+                title: "Tools",
+                description: "These are the tools I use throughout the development process for code editing, version control, API development and testing, design collaboration, debugging, and build automation.",
+                logos: [
+                    "devicon-git-plain",
+                    "devicon-vscode-plain",
+                    "devicon-postman-plain",
+                    "devicon-figma-plain"
+                ],
+                items: ["Git", "VS Code", "Postman", "Figma", "CMake", "Jupyter", "Spyder"]
+            }
+        };
+
+        const page = document.querySelector(".knowledge-page");
+        const modal = document.querySelector(".knowledge-modal");
+        const panelTitle = document.querySelector("#panel-title");
+        const panelDescription = document.querySelector(".panel-description");
+        const panel = document.querySelector(".knowledge-panel");
+        const logoContainer = document.querySelector(".floating-logos");
+        const knowledgeList = document.querySelector(".knowledge-list");
+        const closeButton = document.querySelector(".close-panel");
+
+        function openPanel(areaKey) {
+            const area = knowledgeAreas[areaKey];
+            panel.className = `knowledge-panel area-${areaKey}`;
+            panelTitle.textContent = area.title;
+            panelDescription.textContent = area.description;
+
+            logoContainer.innerHTML = area.logos
+                .map((logoClass) => `<i class="${logoClass}"></i>`)
+                .join("");
+
+            knowledgeList.innerHTML = area.items
+                .map((item) => `<li>${item}</li>`)
+                .join("");
+
+            page.classList.add("is-blurred");
+            modal.classList.add("is-visible");
+            modal.setAttribute("aria-hidden", "false");
+        }
+
+        function closePanel() {
+            page.classList.remove("is-blurred");
+            modal.classList.remove("is-visible");
+            modal.setAttribute("aria-hidden", "true");
+        }
+
+        document.querySelectorAll(".knowledge-card").forEach((card) => {
+            card.addEventListener("click", () => openPanel(card.dataset.area));
+        });
+
+        closeButton.addEventListener("click", closePanel);
+        document.querySelector(".modal-backdrop").addEventListener("click", closePanel);
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closePanel();
+            }
+        });
+    </script>
+</body>
+</html>

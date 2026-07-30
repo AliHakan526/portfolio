@@ -1,0 +1,181 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #0b1020;
+    --panel: rgba(15, 23, 42, 0.72);
+    --line: rgba(148, 163, 184, 0.2);
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --accent: #22c55e;
+    --accent-strong: #38bdf8;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(34, 197, 94, 0.16), transparent 28%),
+        radial-gradient(circle at 80% 70%, rgba(56, 189, 248, 0.14), transparent 30%),
+        var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+#ventures-page {
+    width: min(1180px, 100%);
+    display: grid;
+    grid-template-columns: minmax(360px, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(34px, 6vw, 72px);
+    align-items: center;
+    animation: pageEnter 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+#ventures {
+    padding: clamp(28px, 5vw, 46px);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--panel);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+    backdrop-filter: blur(16px);
+}
+
+.eyebrow {
+    margin-bottom: 14px;
+    color: var(--accent);
+    font-family: monospace;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-family: monospace;
+    font-size: clamp(2.45rem, 5vw, 4.5rem);
+    line-height: 0.95;
+    letter-spacing: 0;
+}
+
+#ventures p {
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: clamp(1rem, 1.45vw, 1.1rem);
+    line-height: 1.8;
+}
+
+#ventures > p:not(.eyebrow) {
+    padding-left: 14px;
+    border-left: 2px solid rgba(34, 197, 94, 0.28);
+}
+
+#venture-images {
+    display: grid;
+    grid-template-columns: 1fr 0.85fr;
+    gap: 16px;
+    align-items: center;
+    min-height: 620px;
+}
+
+#venture-images img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.34);
+    filter: saturate(1.08) contrast(1.02);
+    animation: imageEnter 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.image-one {
+    grid-column: 1 / 3;
+    aspect-ratio: 16 / 9;
+    animation-delay: 180ms;
+}
+
+.image-two {
+    grid-column: 1 / 2;
+    aspect-ratio: 16 / 9;
+    animation-delay: 340ms;
+}
+
+.image-three {
+    grid-column: 2 / 3;
+    aspect-ratio: 4 / 5;
+    animation-delay: 500ms;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(28px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes imageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(26px) rotate(1deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+@media (max-width: 900px) {
+    body {
+        align-items: flex-start;
+        overflow-y: auto;
+    }
+
+    #ventures-page {
+        grid-template-columns: 1fr;
+        padding: 32px 0;
+    }
+
+    #venture-images {
+        grid-template-columns: 1fr 1fr;
+        min-height: auto;
+    }
+
+    .image-one {
+        grid-column: 1 / 3;
+    }
+
+    .image-two,
+    .image-three {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 560px) {
+    body {
+        padding: 18px;
+    }
+
+    #ventures {
+        padding: 26px 18px;
+    }
+
+    #venture-images {
+        grid-template-columns: 1fr;
+    }
+
+    .image-one {
+        grid-column: auto;
+    }
+}
