@@ -6,8 +6,18 @@
     <title>ali hakan unal | build log</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="css/build_log.css">
+    <link rel="stylesheet" href="css/navigation.css">
 </head>
 <body>
+    <nav class="site-navigation" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/knowledge">Knowledge</a>
+        <a href="/build_log" aria-current="page">Build Log</a>
+        <a href="/ventures">Ventures</a>
+        <a href="/non_code">Non-code</a>
+    </nav>
+
     <main class="build-log">
         <header class="page-header">
             <p class="eyebrow">Build Log</p>
@@ -288,7 +298,50 @@
                     </div>
                 </details>
             </article>
-            
+            <article class="project-entry">
+                <div class="project-meta">
+                    <span>09</span>
+                    <span>AI / NLP / Research</span>
+                </div>
+
+                <details open>
+                    <summary>
+                        <span class="project-title-row">
+                            <span>Cisimcik AI Lab</span>
+                            <a class="github-link huggingface-link" href="https://huggingface.co/cisimcik" target="_blank" rel="noopener noreferrer" aria-label="Explore Cisimcik AI Lab on Hugging Face">
+                                <span class="huggingface-icon" aria-hidden="true">🤗</span>
+                            </a>
+                        </span>
+                        <small>A Turkish model family — cisimcik-4b leads our published CETVEL comparison with a score of 57.31.</small>
+                    </summary>
+                    <div class="project-content">
+                        <p>
+                            Together with my teammates, we developed and released a Turkish-focused model family on Hugging Face under the name Cisimcik AI Lab.
+                            This is the name we chose for our independent research team, an informal collective.
+                        </p>
+                        <p>
+                            Built on Qwen3.5-4B-Base, the family covers continued pre-training, conversational post-training, and decision modeling.
+                            All three models are released under the Apache 2.0 license:
+                        </p>
+                        <ul>
+                            <li><a href="https://huggingface.co/cisimcik/cisimcik-base" target="_blank" rel="noopener noreferrer">cisimcik-base</a>: a Turkish-first base model trained on 10 billion tokens, available for further fine-tuning.</li>
+                            <li><a href="https://huggingface.co/cisimcik/cisimcik-4b" target="_blank" rel="noopener noreferrer">cisimcik-4b</a>: a 4.2B-parameter chat model with hybrid reasoning and tool calling, developed through five stages of post-training.</li>
+                            <li><a href="https://huggingface.co/cisimcik/tau-4b" target="_blank" rel="noopener noreferrer">tau-4b</a>: a System One decision model for yes/no, choice, and scoring tasks, returning calibrated probabilities in a single forward pass with a 32K-token context.</li>
+                        </ul>
+                        <p>
+                            In our published benchmark comparison, cisimcik-4b ranks first on CETVEL with an average score of <strong>57.31</strong>
+                            and second on OpenLLM Turkish with <strong>59.60</strong>.
+                            The <a href="https://huggingface.co/cisimcik/cisimcik-4b#benchmark-sonu%C3%A7lar%C4%B1" target="_blank" rel="noopener noreferrer">model card</a> includes the evaluation results and comparison table.
+                        </p>
+                        <p>
+                            We are continuing our research and plan to publish an academic paper on our upcoming work.
+                        </p>
+                        <p>
+                            Stack: Python, PyTorch, Transformers, Hugging Face
+                        </p>
+                    </div>
+                </details>
+            </article>
 
         </section>
     </main>

@@ -223,6 +223,18 @@ summary span {
     transform: translateY(-2px);
 }
 
+.huggingface-link {
+    flex: 0 0 36px;
+}
+
+.huggingface-icon {
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+}
+
 summary small {
     max-width: 720px;
     color: var(--muted);
@@ -263,6 +275,16 @@ summary small {
 
 .project-content li::marker {
     color: var(--accent);
+}
+
+.project-content a {
+    color: var(--accent-strong);
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+}
+
+.project-content a:hover {
+    color: #bbf7d0;
 }
 
 @keyframes riseIn {
